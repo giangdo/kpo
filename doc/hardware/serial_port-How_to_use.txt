@@ -1,0 +1,22 @@
+* How to setup permision for an user in serial port?
+   https://unix.stackexchange.com/questions/338012/how-to-set-custom-permissions-on-dev-ttys0-so-that-they-persist-after-reboot
+   https://askubuntu.com/questions/58119/changing-permissions-on-serial-port
+
+   EX: set permision for ttyUSB0
+   $dmesg |tail
+   [  138.000001] usb 3-3.1: new full-speed USB device number 5 using xhci_hcd
+   [  138.106862] usb 3-3.1: New USB device found, idVendor=0403, idProduct=6001
+   [  138.106867] usb 3-3.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+   [  138.106871] usb 3-3.1: Product: FT232R USB UART
+   [  138.106874] usb 3-3.1: Manufacturer: FTDI
+   [  138.106876] usb 3-3.1: SerialNumber: AL00WSFM
+   [  138.109786] ftdi_sio 3-3.1:1.0: FTDI USB Serial Device converter detected
+   [  138.109844] usb 3-3.1: Detected FT232RL
+   [  138.110272] usb 3-3.1: FTDI USB Serial Device converter now attached to ttyUSB0
+   
+   $ls -l /dev/ttyUSB0
+   crw-rw---- 1 root dialout 188, 0 Thg 3 18 17:29 /dev/ttyUSB0
+
+   $sudo usermod -a -G dialout $USER
+
+   -> Then log out and log in again

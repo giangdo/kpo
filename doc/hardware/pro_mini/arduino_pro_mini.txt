@@ -1,0 +1,13 @@
+* What is the board that I bought from HSHOP?
+   http://hshop.vn/products/arduino-pro-mini-2
+   https://www.sparkfun.com/products/11113
+
+   -> But actually I still haven't indentified what I bought
+   XXX
+
+* How to distinguish between arduino pro mini 5v and arduino pro mini 3.3v?
+   https://arduino.stackexchange.com/questions/8511/how-to-identify-arduino-mini-pro-5v-vs-3-3v/8518
+
+* 
+   
+

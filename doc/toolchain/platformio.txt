@@ -19,10 +19,9 @@
       pro16MHzatmega328     ATMEGA328P     16MHz     30KB    2KB    Arduino Pro or Pro Mini ATmega328 (5V, 16 MHz)
 
    + to initialize the project that will build for pro16MHzatmega328 only:
-      $mkdir po
-      $cd po
+      $mkdir code
+      $cd code
       $platformio init --board pro16MHzatmega328
-      $ls po
       $l -al
          .gitignore
          .travis.yml
@@ -30,4 +29,20 @@
          platformio.ini
          src
 
+   + to build project:
+      $platformio run 
+      or
+      $pio run
 
+   + to clean project
+      $platformio run --target clean
+      or 
+      $pio run -t clean
+      
+   + to build project and upload firmware:
+      $platformio run --target upload
+      or
+      $pio run -t upload
+
+* what is the default alias name for platformio command?
+   -> pio => we can use "pio" instead of "platformio" command in command line

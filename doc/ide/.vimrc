@@ -56,6 +56,9 @@ Plugin 'tpope/vim-fugitive'
 "working with C/C++
 Plugin 'majutsushi/tagbar'
 
+"airline"
+Plugin 'vim-airline/vim-airline'
+
 call vundle#end()
 filetype plugin on
 
@@ -67,37 +70,37 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[0 q"
 
-"SET STATUS LINE
-set laststatus=2
-set statusline=%<%t
-set statusline+=\ \ 
-" show current function name at the cursor
-" Note sometimes it will slowdown vim -> refer: https://stackoverflow.com/questions/33699049/display-current-function-in-vim-status-line
-set statusline+=%{tagbar#currenttag('[%s]\ ','')}
-"white space
-set statusline+=\ \ 
-" show current buffer revision in mecurial reposity
-" -> I see this plugin not work well so I disable that
-" set statusline+=[%{HGRev()}] 
-"white space
-set statusline+=\ 
-" show current buffer revision in git reposity
-" This plugin work well but I don't think this is "must need" information -> just disable this!
-set statusline+=%{fugitive#statusline()}
-set statusline+=%=
-set statusline+=%m "modified flag
-set statusline+=%r "readonly flag
-set statusline+=%y "filetype
-"white space
-set statusline+=\ \  
-set statusline+=%l
-set statusline+=/
-set statusline+=%L
-set statusline+=(
-set statusline+=%p
-set statusline+=%%
-set statusline+=)-
-set statusline+=%c
+""SET STATUS LINE
+"set laststatus=2
+"set statusline=%<%t
+"set statusline+=\ \ 
+"" show current function name at the cursor
+"" Note sometimes it will slowdown vim -> refer: https://stackoverflow.com/questions/33699049/display-current-function-in-vim-status-line
+"set statusline+=%{tagbar#currenttag('[%s]\ ','')}
+""white space
+"set statusline+=\ \ 
+"" show current buffer revision in mecurial reposity
+"" -> I see this plugin not work well so I disable that
+"" set statusline+=[%{HGRev()}] 
+""white space
+"set statusline+=\ 
+"" show current buffer revision in git reposity
+"" This plugin work well but I don't think this is "must need" information -> just disable this!
+"set statusline+=%{fugitive#statusline()}
+"set statusline+=%=
+"set statusline+=%m "modified flag
+"set statusline+=%r "readonly flag
+"set statusline+=%y "filetype
+""white space
+"set statusline+=\ \  
+"set statusline+=%l
+"set statusline+=/
+"set statusline+=%L
+"set statusline+=(
+"set statusline+=%p
+"set statusline+=%%
+"set statusline+=)-
+"set statusline+=%c
 
 " MAP LEADER KEY to , (Because real leader hurt my finger)
 let mapleader = ","
@@ -292,6 +295,14 @@ colorscheme solarized8
 nmap <Leader>t :TagbarToggle<CR>
 let g:tagbar_sort = 0
 highlight TagbarHighlight ctermfg=white ctermbg=red
+
+"plugin vim-airline/vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_section_b = '%{airline#util#prepend(airline#extensions#tagbar#currenttag(),0)}%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+let g:airline_section_x = '%{airline#util#prepend("",0)}%{airline#util#wrap(airline#parts#filetype(),0)}'
+let g:airline_section_error = ''
+let g:airline_section_warning = ''
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "VIMTIPS:
